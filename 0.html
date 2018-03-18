@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function plus(x, y) {
+			return x + y; 
+		}
+		console.log (plus(1, 2));
+		
+		function multiply(x, y)  {
+			result = x * y;
+			return result;
+		};
+		console.log (multiply (3, 10));
+
+        
+        function mergeArrays(arr1, arr2) {
+        	arr1 = arr1.concat(arr2);
+        	return arr1;
+        };
+        console.log (mergeArrays([1, 2, 3], [4, 5]));
+
+        const people = [{sex: "female", name: "Kate", film: "titanic"}, {sex: "male", name: "Andrey", film: "kil bill"}]; 
+        
+        function filterFemales(people) {
+        	return people.filter(people => people.sex == "female");
+        };;
+        console.log (filterFemales(people));
+        
+		getQuadrant = (x, y) => {
+			let trigon = ((x > 0) && (y > 0)) ? "1 четверть" :
+			((x < 0) && (y > 0)) ? "2 четверть" :
+			((x > 0) && (y < 0)) ? "4 четверть" :
+			((x < 0) && (y < 0)) ? "3 четверть" :
+			"не в четверти";
+			return trigon;
+		};
+		console.log(getQuadrant(1, 2));
+        console.log(getQuadrant(-1, 2)); 
+        console.log(getQuadrant(-2, -3)); 
+        console.log(getQuadrant(4, -7));
+        console.log(getQuadrant(0, 0));
+
+		plus1 = (...arguments) => {
+        	let result = 0;
+ 			for (let i = 0; i < arguments.length; i++) {
+            	result += arguments[i];
+ 				}
+			return result;
+		};
+		console.log (plus1 (2, 3, 5, 7, 3));
+
+        multiplyAll = (...arguments) => {
+        	let result = 1;
+        	for (let i = 0; i <arguments.length; i++) {
+        		result *= arguments[i];
+        	}
+        	return result;
+        };
+        console.log (multiplyAll (2, 4, 6));
+        
+        multiplyAll1 = (...arguments) =>         	
+         	arguments.reduce(
+         		(a, b) => a * b,
+         		1
+         	)
+        console.log (multiplyAll1 (1, 2, 3));
+
+        const objectToQueryString = obj => {
+  			let str = [];
+  			for (let p in obj)
+    			if (obj.hasOwnProperty(p)) {
+    			  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    			};
+  			return str.join("&");
+			};
+
+        console.log(objectToQueryString({ name1: 'John', name2: 'Федор' }));
+
+        const person = {
+            address: {
+                street: "Кутузовский проспект"
+   		    }
+	    }
+
+        const getIn = (object, path, def) => {
+        	let result = path.reduce(
+	        (currentObject, property) => {
+	            if (currentObject !== undefined) {
+	        	if (currentObject.hasOwnProperty(property)) {return currentObject[property]}
+	            }
+	        }, object
+	    )
+	    if (result === undefined) {return def} else {return result}
+	    }
+
+  		console.log (getIn(person, ['address', 'street'], 'Бомж'));
+</script>	
+</body>
+</html>
